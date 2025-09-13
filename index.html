@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="darkreader-lock"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="manifest" href='data:application/manifest+json,{"display":"standalone"}' />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <title>PuckYou.lol</title>
+  <meta name="description" content="Family friendly Puck games that run in the browser!">
+
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://PuckYou.lol/favicon.png">
+  <meta property="og:title" content="PuckYou.lol">
+  <meta property="og:description" content="Family friendly Puck games that run in the browser!">
+  <meta property="og:site_name" content="PuckYou.lol">
+  <meta property="og:url" content="https://PuckYou.lol">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PuckYou.lol">
+  <meta name="twitter:description" content="Family friendly Puck games that run in the browser!">
+  <meta name="twitter:image" content="https://PuckYou.lol/favicon.png">
+
+  <meta itemprop="name" content="PuckYou.lol">
+  <meta itemprop="description" content="Family friendly Puck games that run in the browser!">
+  <meta itemprop="image" content="https://PuckYou.lol/favicon.png">
+
+  <meta name="theme-color" content="#375D8A">
+
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05010a;
+      --panel: #0d0d1a;
+      --panel-2: #141426;
+      --text: #e9eef7;
+      --muted: #98a2b3;
+      --accent: #ff00ff;
+      --radius: 16px;
+      --gap: 1rem;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.5;
+      color: var(--text);
+      background: linear-gradient(135deg, #05010a, #12041f 40%, #0d0d1a 100%),
+                  radial-gradient(800px 500px at 100% 0%, #ff00ff22, transparent),
+                  radial-gradient(1000px 600px at 10% -10%, #00fff722, transparent);
+      background-blend-mode: screen, overlay, normal;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    header.site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: linear-gradient(135deg, #1a0029, #0a001a);
+      border: 1px solid #ff00ff44;
+      border-radius: calc(var(--radius) + 4px);
+      padding: 1rem 1.25rem;
+      position: sticky;
+      top: 0.75rem;
+      z-index: 10;
+      backdrop-filter: blur(10px) saturate(140%);
+      box-shadow: 0 0 25px #ff00ff55, 0 0 40px #00ffff22;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+    }
+
+    .brand .logo {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ff00ff, #00ffff);
+      color: white;
+      box-shadow: 0 0 15px #ff00ff88, 0 0 20px #00ffff55;
+    }
+
+    .brand .name {
+      font-family: 'Bitcount Grid Double', cursive;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: #ff00ff;
+      text-shadow: 0 0 5px #ff00ff, 0 0 15px #ff00ff, 0 0 25px #00ffff;
+    }
+
+    .search {
+      flex: 1;
+      display: flex;
+      max-width: 420px;
+      margin-left: auto;
+    }
+
+    .search input {
+      width: 100%;
+      background: #0f0f20;
+      border: 1px solid #ff00ff55;
+      color: var(--text);
+      padding: .75rem 1rem;
+      border-radius: 12px;
+      outline: none;
+      box-shadow: 0 0 10px #ff00ff33 inset;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--gap);
+      margin-top: 2rem;
+    }
+
+    .card {
+      position: relative;
+      background: linear-gradient(180deg, #1a0029, #0a001a);
+      border: 1px solid #ff00ff33;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 0 20px #ff00ff33;
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+      isolation: isolate;
+    }
+
+    .card:hover { 
+      transform: translateY(-4px) scale(1.02);
+      border-color: #00ffff66;
+      box-shadow: 0 0 25px #00ffff99, 0 0 35px #ff00ff66;
+    }
+
+    .card .media { aspect-ratio: 1 / 1; background: #0002; }
+
+    .card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: saturate(1.2) contrast(1.1);
+    }
+
+    .card .body {
+      padding: 1rem;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: .2px;
+      color: #00ffff;
+      text-shadow: 0 0 5px #00ffff, 0 0 12px #ff00ff;
+    }
+
+    .card a.stretched-link {
+      position: absolute; inset: 0; z-index: 1; border-radius: inherit;
+    }
+
+    .card[hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header" role="banner">
+      <a class="brand" href="https://puckyou.lol" aria-label="Home">
+        <span class="logo" aria-hidden="true">😇</span>
+        <span class="name">PuckYou.lol</span>
+      </a>
+      <form class="search" role="search" onsubmit="event.preventDefault();">
+        <input id="search" type="search" placeholder="Search games…" aria-label="Search games" />
+      </form>
+    </header>
+
+    <main class="grid" id="games" aria-live="polite">
+
+      <article class="card" data-title="Puck Kamekazi Shortbus" aria-label="Puck Kamekazi Shortbus">
+        <a class="stretched-link" href="/shortbus" aria-label="Open Puck Kamekazi Shortbus"></a>
+        <div class="media">
+          <img loading="lazy" src="shortbus.png" alt="Puck Kamekazi Shortbus Screenshot" />
+        </div>
+        <div class="body">
+          <div class="title">Puck Kamekazi Shortbus</div>
+        </div>
+      </article>
+
+      <article class="card" data-title="Puck Catgirls" aria-label="Puck Catgirls">
+        <a class="stretched-link" href="/catgirls"></a>
+        <div class="media">
+          <img loading="lazy" src="catgirls.png" alt="Puck Catgirls Screenshot" />
+        </div>
+        <div class="body">
+          <div class="title">Puck Catgirls</div>
+        </div>
+      </article>
+
+    </main>
+
+  </div>
+
+  <script>
+    const input = document.getElementById('search');
+    const grid = document.getElementById('games');
+
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      for (const card of grid.querySelectorAll('.card')) {
+        const text = card.dataset.title.toLowerCase();
+        card.hidden = q && !text.includes(q);
+      }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
