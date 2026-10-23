@@ -180,6 +180,13 @@
     }
 
     .card[hidden] { display: none !important; }
+
+    /* Hide search bar on vertical (portrait) mobile displays */
+    @media (max-width: 768px) and (orientation: portrait) {
+      .search {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
